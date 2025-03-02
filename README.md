@@ -1,4 +1,3 @@
-# revolution-uc-chrome-extension
 # Modern Wellness Companion
 
 *Nurture your well-being, one click at a time.*
