@@ -1,4 +1,22 @@
 {
+    "manifest_version": 3,
+    "name": "Financial Manager",
+    "version": "1.0",
+    "description": "Manage your finances directly from a Chrome extension popup.",
+    "action": {
+      "default_popup": "FinancialManager.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
+    },
+    "permissions": [],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "icons": {
+------
   "manifest_version": 3,
   "name": "Wellness Companion",
   "version": "1.0",
@@ -10,6 +28,7 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
+----
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
