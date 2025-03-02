@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   let income = 0;
   let expenses = 0;
-  let investments = 0;
   let debts = 0;
   let goals = {};
 
@@ -12,21 +11,28 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("yearDisplay").textContent = `${currentYear} ${months[currentMonthIndex]}`;
   }
 
+  
   function updateUI() {
-      document.getElementById("budget").textContent = `Income: $${income}`;
-      document.getElementById("savings").textContent = `Investments: $${investments}`;
-      document.getElementById("goalProgress").textContent = `Expenses: $${expenses}`;
-      document.getElementById("rent").textContent = `Debts: $${debts}`;
+    document.getElementById("budget").textContent = `Income: $${income}`;
+    document.getElementById("goalProgress").textContent = `Expenses: $${expenses}`;
+    document.getElementById("rent").textContent = `Debts: $${debts}`;
 
-      // Update the goals list
-      const goalsList = document.getElementById("goalsList");
-      goalsList.innerHTML = "Goals:";
-      for (const [name, amount] of Object.entries(goals)) {
-          const goalItem = document.createElement("div");
-          goalItem.textContent = `${name}: $${amount}`;
-          goalsList.appendChild(goalItem);
-      }
-  }
+    // Update the goals list
+    const goalsList = document.getElementById("goalsList");
+    goalsList.innerHTML = "Goals:";
+    for (const [name, amount] of Object.entries(goals)) {
+        const goalItem = document.createElement("div");
+        goalItem.textContent = `${name}: $${amount}`;
+        goalsList.appendChild(goalItem);
+    }
+
+    // Calculate water level
+    const total = income + expenses + debts;
+    const waterLevel = (income / total) * 100;
+
+    // Update the water level
+    document.getElementById("waterLevel").style.height = `${waterLevel}%`;
+}
 
   updateMonthYearDisplay();
   updateUI();
@@ -63,14 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   });
 
-  document.getElementById("addInvestment").addEventListener("click", function() {
-      let amount = parseFloat(prompt("Enter investment amount:", "0"));
-      if (!isNaN(amount)) {
-          investments += amount;
-          updateUI();
-      }
-  });
-
   document.getElementById("addDebt").addEventListener("click", function() {
       let amount = parseFloat(prompt("Enter debt amount:", "0"));
       if (!isNaN(amount)) {
@@ -85,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (goalName && !isNaN(goalAmount)) {
           goals[goalName] = goalAmount;
           alert(`Goal "${goalName}" set to $${goalAmount}`);
+          updateUI();
       }
   });
 });
