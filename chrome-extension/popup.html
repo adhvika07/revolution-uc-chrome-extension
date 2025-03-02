@@ -1,0 +1,71 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modern Wellness Companion</title>
+  <link rel="stylesheet" href="styles/popup.css" />
+</head>
+<body>
+
+  <header class="header">
+    <h1>Modern Wellness Companion</h1>
+  </header>
+
+  <nav class="nav-bar">
+    <button data-tab="hydration-pomodoro" class="tab-btn active">Hydration & Pomodoro</button>
+    <button data-tab="star-progress" class="tab-btn">Star Progress</button>
+    <button data-tab="sticky-notes" class="tab-btn">Sticky Notes</button>
+    <button data-tab="finance" class="tab-btn">Finance</button>
+  </nav>
+
+  <main class="tab-content">
+    <!-- Hydration & Pomodoro -->
+    <section id="hydration-pomodoro" class="tab-section active">
+      <div class="plant-container">
+        <img id="plant-image" src="images/plant1.png" alt="Plant" />
+        <p id="hydration-status">Hydration: 50%</p>
+        <button id="water-btn">💦 Water Plant</button>
+      </div>
+      <hr />
+      <div class="pomodoro-container">
+        <h2>Pomodoro Timer</h2>
+        <p id="timer-display">25:00</p>
+        <button id="start-pomodoro">Start</button>
+        <button id="stop-pomodoro">Stop</button>
+      </div>
+    </section>
+
+    <!-- Star Progress -->
+    <section id="star-progress" class="tab-section">
+      <h2>Your Star Progress</h2>
+      <div id="star-icon" class="star-icon">⭐</div>
+      <p id="star-message">Your star is shining with 0 uses!</p>
+    </section>
+
+    <!-- Sticky Notes -->
+    <section id="sticky-notes" class="tab-section">
+      <h2>Sticky Notes</h2>
+      <textarea id="new-note" placeholder="Type your note..."></textarea>
+      <button id="add-note">Add Note</button>
+      <div id="notes-container"></div>
+    </section>
+
+    <!-- Finance -->
+    <section id="finance" class="tab-section">
+      <h2>Finance Manager</h2>
+      <p id="budget">Income: $0</p>
+      <p id="expenses">Expenses: $0</p>
+      <button id="add-income">Add Income</button>
+      <button id="add-expense">Add Expense</button>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+  <script src="scripts/hydration-pomodoro.js"></script>
+  <script src="scripts/star-progress.js"></script>
+  <script src="scripts/sticky-notes.js"></script>
+  <script src="scripts/finance.js"></script>
+
+</body>
+</html>
