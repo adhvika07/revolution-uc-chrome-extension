@@ -1,62 +1,53 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const hydrationDisplay = document.getElementById("hydration");
-    const growthDisplay = document.getElementById("growth");
-    const moodDisplay = document.getElementById("mood");
-    const waterButton = document.getElementById("water-btn");
     const plantImage = document.getElementById("plant-image");
+    const hydrationStatus = document.getElementById("hydration-status");
+    const waterButton = document.getElementById("water-btn");
 
-    let hydration = 50; // Start hydration at 50%
-    let growth = 0; // Start growth at 0%
-    let mood = "Happy";
+    let plantData = { hydration: 50, growth: 0 };
 
-    function updateDisplay() {
-        hydrationDisplay.textContent = `Hydration: ${hydration}%`;
-        growthDisplay.textContent = `Growth: ${growth}%`;
-        moodDisplay.textContent = `Mood: ${mood}`;
+    // Load Plant Data from Chrome Storage
+    chrome.storage.local.get(["plantData"], function (result) {
+        if (result.plantData) {
+            plantData = result.plantData;
+        }
+        updatePlantUI();
+    });
 
-        // 🌱 Change plant image based on growth percentage
-        if (growth < 20) {
-            plantImage.src = "images/plant1.png";  // Wilting
-        } else if (growth < 50) {
-            plantImage.src = "images/plant2.png";  // Small sprout
-        } else if (growth < 80) {
-            plantImage.src = "images/plant3.png";  // Healthy plant
+    // Water the Plant
+    waterButton.addEventListener("click", function () {
+        if (plantData.hydration < 100) {
+            plantData.hydration += 10;
+            plantData.growth += 5;
+        }
+
+        if (plantData.hydration >= 100) {
+            plantData.hydration = 0; // Reset hydration after reaching max
+            plantData.growth += 10; // Increase growth
+        }
+
+        if (plantData.growth >= 100) {
+            plantData.growth = 100;
+        }
+
+        updatePlantUI();
+        savePlantData();
+    });
+
+    // Update Plant UI
+    function updatePlantUI() {
+        hydrationStatus.innerText = `Hydration: ${plantData.hydration}%`;
+
+        if (plantData.growth >= 100) {
+            plantImage.src = "images/plant3.png";
+        } else if (plantData.growth >= 50) {
+            plantImage.src = "images/plant2.png";
         } else {
-            plantImage.src = "images/plant4.png";  // Thriving tree
+            plantImage.src = "images/plant1.png";
         }
     }
 
-    waterButton.addEventListener("click", function () {
-        if (hydration < 100) {
-            hydration += 15; // Increase hydration when watered
-        }
-
-        if (hydration >= 80) {
-            mood = "Thriving 🌿";
-        } else if (hydration >= 50) {
-            mood = "Happy 😊";
-        } else {
-            mood = "Sad 😢";
-        }
-
-        if (hydration >= 60 && growth < 100) {
-            growth += 10; // Increase growth when hydrated
-        }
-
-        updateDisplay();
-    });
-
-    setInterval(() => {
-        if (hydration > 0) {
-            hydration -= 5; // Reduce hydration over time
-        }
-
-        if (hydration < 30) {
-            mood = "Wilting 😟";
-        }
-
-        updateDisplay();
-    }, 5000); // Decrease hydration every 5 seconds
-
-    updateDisplay();
+    // Save Data to Chrome Storage
+    function savePlantData() {
+        chrome.storage.local.set({ plantData: plantData });
+    }
 });

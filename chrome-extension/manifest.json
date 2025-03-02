@@ -1,38 +1,42 @@
 {
-    "manifest_version": 3,
-    "name": "Wellness Companion",
-    "version": "1.0",
-    "description": "A Chrome extension for wellness, productivity, and finance tracking.",
-    "permissions": [
-      "storage",
-      "notifications",
-      "activeTab"
-    ],
-    "host_permissions": [
-      "*://*/*"
-    ],
-    "background": {
-      "service_worker": "scripts/background.js"
-    },
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "images/plant1.png",
-        "48": "images/plant1.png",
-        "128": "images/plant1.png"
-      }
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["scripts/content.js"]
-      }
-    ],
-    "web_accessible_resources": [
-      {
-        "resources": ["images/*"],
-        "matches": ["<all_urls>"]
-      }
-    ]
-  }
-  
+  "manifest_version": 3,
+  "name": "Wellness Companion",
+  "version": "1.1",
+  "description": "A Chrome extension for wellness, productivity, and financial tracking.",
+  "permissions": [
+    "storage",
+    "notifications",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/plant1.png",
+      "48": "images/plant2.png",
+      "128": "images/plant3.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/*",
+        "styles/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

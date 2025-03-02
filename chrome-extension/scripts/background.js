@@ -1,5 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
-    console.log("Wellness Companion Installed!");
+    console.log("🚀 Wellness Companion Installed!");
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -10,5 +10,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             title: "Reminder",
             message: request.message
         });
+        sendResponse({ status: "Notification Sent" });
     }
 });

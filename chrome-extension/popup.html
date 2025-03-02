@@ -4,25 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wellness Companion</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h2>Wellness Companion</h2>
-    <div>
-        <h3>Take Care of Your Plant</h3>
-        <img id="plant-image" src="images/plant1.png" alt="Plant" width="150">
-        <p id="hydration">Hydration: 50%</p>
-        <p id="growth">Growth: 0%</p>
-        <p id="mood">Mood: Happy</p>
-        <button id="water-btn">Water the Plant</button>
+
+    <!-- 🌿 Main Menu -->
+    <div id="main-menu" class="container active">
+        <h1>🌿 Wellness Companion</h1>
+        <button class="nav-button" data-page="hydration">💧 Hydration & Pomodoro</button>
+        <button class="nav-button" data-page="star">⭐ Star Progress</button>
+        <button class="nav-button" data-page="notes">📝 Sticky Notes</button>
+        <button class="nav-button" data-page="finance">🐷 Finance Manager</button>
     </div>
 
-    <h3>Pomodoro Timer</h3>
-    <p id="timer-display">25:00</p>
-    <button id="start-pomodoro">Start</button>
-    <button id="stop-pomodoro">Stop</button>
+    <!-- 💧 Hydration & Pomodoro -->
+    <div id="hydration" class="page container">
+        <h2>💧 Hydration & Pomodoro</h2>
+        <img id="plant-image" src="images/plant1.png" alt="Plant">
+        <p id="hydration-status">Hydration: 50%</p>
+        <button id="water-btn">💦 Water the Plant</button>
 
+        <h3>⏳ Pomodoro Timer</h3>
+        <p id="timer-display">25:00</p>
+        <button id="start-pomodoro">▶️ Start</button>
+        <button id="stop-pomodoro">⏹ Stop</button>
+
+        <button class="back-button">🔙 Back</button>
+    </div>
+
+    <!-- ⭐ Star Progress -->
+    <div id="star" class="page container">
+        <h2>⭐ Your Star Progress</h2>
+        <div id="star-icon">⭐</div>
+        <p id="star-message">Your star is shining with 0 uses! 🌟</p>
+        <button class="back-button">🔙 Back</button>
+    </div>
+
+    <!-- 📝 Sticky Notes -->
+    <div id="notes" class="page container">
+        <h2>📝 Sticky Notes</h2>
+        <textarea id="new-note" placeholder="Type your note here..."></textarea>
+        <button id="add-note">➕ Add Note</button>
+        <div id="notes-container"></div>
+        <button class="back-button">🔙 Back</button>
+    </div>
+
+    <!-- 🐷 Finance Manager -->
+    <div id="finance" class="page container">
+        <h2>🐷 PiggyPal (Finance Manager)</h2>
+        <button id="add-income">💰 Add Income</button>
+        <button id="add-expense">💸 Add Expense</button>
+        <p id="budget">Income: $0</p>
+        <p id="expenses">Expenses: $0</p>
+        <button class="back-button">🔙 Back</button>
+    </div>
+
+    <script src="scripts/navigation.js"></script>
     <script src="scripts/plant-game.js"></script>
     <script src="scripts/pomodoro.js"></script>
+    <script src="scripts/star.js"></script>
+    <script src="scripts/notes.js"></script>
+    <script src="scripts/finance.js"></script>
+
 </body>
 </html>

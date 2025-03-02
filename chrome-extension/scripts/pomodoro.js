@@ -1,39 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
     const timerDisplay = document.getElementById("timer-display");
-    const startBtn = document.getElementById("start-pomodoro");
-    const stopBtn = document.getElementById("stop-pomodoro");
-    
-    let timeLeft = 25 * 60;
-    let timer;
+    const startButton = document.getElementById("start-pomodoro");
+    const stopButton = document.getElementById("stop-pomodoro");
 
-    function updateDisplay() {
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
+    let pomodoroTime = 25 * 60; // 25 minutes
+    let pomodoroInterval = null;
+
+    // Update Timer Display
+    function updateTimerDisplay() {
+        const minutes = Math.floor(pomodoroTime / 60);
+        const seconds = pomodoroTime % 60;
         timerDisplay.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     }
 
-    function startTimer() {
-        if (!timer) {
-            timer = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    updateDisplay();
+    // Start Timer
+    function startPomodoro() {
+        if (!pomodoroInterval) {
+            pomodoroInterval = setInterval(() => {
+                if (pomodoroTime > 0) {
+                    pomodoroTime--;
+                    updateTimerDisplay();
                 } else {
-                    clearInterval(timer);
-                    timer = null;
-                    chrome.runtime.sendMessage({ action: "notify", message: "Pomodoro session over!" });
+                    clearInterval(pomodoroInterval);
                 }
             }, 1000);
         }
     }
 
-    function stopTimer() {
-        clearInterval(timer);
-        timer = null;
+    // Stop Timer
+    function stopPomodoro() {
+        clearInterval(pomodoroInterval);
+        pomodoroInterval = null;
     }
 
-    startBtn.addEventListener("click", startTimer);
-    stopBtn.addEventListener("click", stopTimer);
-
-    updateDisplay();
+    startButton.addEventListener("click", startPomodoro);
+    stopButton.addEventListener("click", stopPomodoro);
 });
