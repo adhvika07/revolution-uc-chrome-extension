@@ -15,8 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Create the note object
+        // Create the note object with a unique id
         const note = { 
+            id: generateNoteId(), // Generate a unique ID for the note
             content: noteContent, 
             top: 100, 
             left: 100, 
@@ -94,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to remove note from localStorage
     function removeNoteFromStorage(note) {
         const notes = JSON.parse(localStorage.getItem('notes')) || [];
-        const updatedNotes = notes.filter(n => n.content !== note.content);
+        const updatedNotes = notes.filter(n => n.id !== note.id); // Use `id` to match notes
         localStorage.setItem('notes', JSON.stringify(updatedNotes));
     }
 
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateNoteInStorage(note) {
         const notes = JSON.parse(localStorage.getItem('notes')) || [];
         const updatedNotes = notes.map(n => {
-            if (n.content === note.content) {
+            if (n.id === note.id) { // Compare by `id`
                 n.content = note.content;
                 n.top = note.top;  // Store updated position
                 n.left = note.left; // Store updated position
@@ -147,5 +148,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // Update position in localStorage when dragging ends
             updateNoteInStorage(note);
         });
+    }
+
+    // Function to generate a unique note ID (based on timestamp)
+    function generateNoteId() {
+        return 'note-' + new Date().getTime(); // Ensure uniqueness by using the current timestamp
     }
 });
