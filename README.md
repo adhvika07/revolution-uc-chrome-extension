@@ -40,7 +40,6 @@ Modern Wellness Companion runs directly in your Chrome browser. When you click t
 2. **Load the Extension in Chrome:**
    - Open Chrome and navigate to `chrome://extensions/`.
    - Enable **Developer Mode** (toggle in the top right corner).
-   - Click **Load unpacked** and select the project folder (`modern-wellness-companion`).
 
 3. The extension icon will appear in your Chrome toolbar, and you can click it to open the popup.
 
