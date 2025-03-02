@@ -1,0 +1,80 @@
+body {
+    font-family: 'Baloo', sans-serif;
+    background-color: #a88077;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url('./menu_background.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative; /* Ensure overlay stays relative to the body */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: -1; /* Ensures overlay is behind the text */
+}
+
+.title {
+    font-size: 60px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    z-index: 1; /* Ensure text is above the overlay */
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.menu-button {
+    background-color: #6b9080;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-button::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    right: 15px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+}
+
+.menu-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.menu-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
