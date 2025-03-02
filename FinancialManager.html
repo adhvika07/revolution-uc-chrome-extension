@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PiggyPal 🐷✨</h1>
+        <div class="month-selector">
+            <button id="prevYear" class="nav-button">←</button>
+            <span id="yearDisplay">2023 Jan</span>
+            <button id="nextYear" class="nav-button">→</button>
+        </div>
+        <div class="pie-chart" id="pieChart">
+            <div class="piggy-ear left"></div>
+            <div class="piggy-ear right"></div>
+            <div class="piggy-snout"></div>
+        </div>
+        <div class="financial-info">
+            <div id="goalsList">Goals:</div>
+            <div id="budget">Income: $0</div>
+            <div id="savings">Investments: $0</div>
+            <div id="goalProgress">Expenses: $0</div>
+            <div id="rent">Debts: $0</div>
+            
+        </div>
+        <div class="buttons">
+            <button id="setGoal">Set Goal</button>
+            <button id="addIncome">Add Income</button>
+            <button id="addExpense">Add Expense</button>
+            <button id="addInvestment">Add Investment</button>
+            <button id="addDebt">Add Debt</button>
+           
+        </div>
+    </div>
+    <script src="FinancialManager.js"></script>
+</body>
+</html>

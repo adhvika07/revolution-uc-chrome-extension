@@ -1,19 +1,19 @@
 {
     "manifest_version": 3,
-    "name": "Wellness Companion",
+    "name": "Financial Manager",
     "version": "1.0",
-    "description": "Track water intake, meditation/mood, and play fun mini-games!",
-    "permissions": ["storage", "notifications", "alarms"],
-    "background": {
-      "service_worker": "background.js"
-    },
+    "description": "Manage your finances directly from a Chrome extension popup.",
     "action": {
-      "default_popup": "popup.html",
+      "default_popup": "FinancialManager.html",
       "default_icon": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",
         "128": "icons/icon128.png"
       }
+    },
+    "permissions": [],
+    "background": {
+      "service_worker": "background.js"
     },
     "icons": {
       "16": "icons/icon16.png",
