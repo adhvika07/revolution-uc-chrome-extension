@@ -1,0 +1,144 @@
+body {
+    font-family: 'Baloo', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url('./corkboard.avif');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    overflow: hidden; /* Prevents page scrollbars */
+}
+
+h1 {
+    font-size: 60px;
+    margin-top: 30px;
+    color: white;
+}
+
+#new-note {
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    color: black;
+}
+
+#add-note {
+    background-color: #6b9080;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#add-note:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#add-note:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sticky-note {
+    background-color: #ffeb3b;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    cursor: move;
+    display: flex;
+    flex-direction: column;
+    transform: rotate(-2deg); /* Slightly rotated to give it a natural sticky note look */
+    transition: transform 0.2s ease;
+    z-index: 100;
+}
+
+.sticky-note p {
+    font-size: 16px;
+    margin: 0;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+.sticky-note button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.sticky-note button:hover {
+    background-color: darkred;
+}
+
+#back-to-main-menu {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#back-to-main-menu:hover {
+    background-color: #2980b9;
+}
+
+.sticky-note.dragging {
+    opacity: 0.8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-main-menu {
+    margin-top: 30px;
+    background-color: #6b9080;  /* Matching the color with the Add Note button */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#back-to-main-menu:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-main-menu:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#back-to-main-menu a {
+    text-decoration: none;
+    color: white;
+}
+

@@ -1,0 +1,95 @@
+body {
+    font-family: 'Baloo', sans-serif;
+    background-color: #a88077;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center the content vertically */
+    background-image: url('./night_sky.avif');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: -1; /* Ensures overlay is behind the text */
+}
+
+
+/* Centering the content container */
+.content-container {
+    text-align: center; /* Horizontally center the text */
+    z-index: 1;
+}
+
+/* Styling for the title (Your Star) */
+h1 {
+    font-size: 60px;
+    margin-bottom: 20px; /* Add some space between the title and the star */
+    font-weight: bold;
+}
+
+/* Styling for the giant animated star */
+#star {
+    font-size: 200px; /* Make the star giant */
+    color: #ffd700;
+    transition: opacity 0.3s ease-in-out;
+    animation: starGlow 2s infinite alternate;
+    text-align: center;
+}
+
+/* Keyframes for glowing star animation */
+@keyframes starGlow {
+    0% {
+        text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffcc00;
+    }
+    100% {
+        text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700, 0 0 50px #ffcc00;
+    }
+}
+
+/* Styling for the usage info paragraph */
+#usage-info {
+    font-size: 24px;
+    margin-bottom: 40px;
+    font-weight: normal;
+}
+
+/* Button styling */
+#back-to-main-menu {
+    padding: 15px 30px;
+    background-color: #6b9080;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#back-to-main-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+#back-to-main-menu:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-main-menu:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
