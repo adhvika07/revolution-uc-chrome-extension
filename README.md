@@ -33,7 +33,7 @@ Modern Wellness Companion runs directly in your Chrome browser. When you click t
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/modern-wellness-companion.git
+   git clone https://github.com/adhvika07/revolution-uc-chrome-extension.git
    ```
 
 2. **Load the Extension in Chrome:**
