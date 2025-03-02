@@ -1,50 +1,47 @@
-document.addEventListener("DOMContentLoaded", function () {
+// scripts/finance.js
+document.addEventListener("DOMContentLoaded", () => {
     const budgetDisplay = document.getElementById("budget");
     const expensesDisplay = document.getElementById("expenses");
     const addIncomeButton = document.getElementById("add-income");
     const addExpenseButton = document.getElementById("add-expense");
-
+  
     let financeData = {
-        income: 0,
-        expenses: 0
+      income: 0,
+      expenses: 0
     };
-
-    // Load stored finance data
-    chrome.storage.local.get(["financeData"], function (result) {
-        if (result.financeData) {
-            financeData = result.financeData;
-        }
-        updateFinanceUI();
+  
+    chrome.storage.local.get(["financeData"], (result) => {
+      if (result.financeData) {
+        financeData = result.financeData;
+      }
+      updateUI();
     });
-
-    // Add income
-    addIncomeButton.addEventListener("click", function () {
-        let amount = parseFloat(prompt("Enter income amount:", "0"));
-        if (!isNaN(amount) && amount > 0) {
-            financeData.income += amount;
-            updateFinanceUI();
-            saveFinanceData();
-        }
+  
+    addIncomeButton.addEventListener("click", () => {
+      const amountStr = prompt("Enter income amount:", "0");
+      const amount = parseFloat(amountStr);
+      if (!isNaN(amount) && amount > 0) {
+        financeData.income += amount;
+        saveFinanceData();
+      }
     });
-
-    // Add expense
-    addExpenseButton.addEventListener("click", function () {
-        let amount = parseFloat(prompt("Enter expense amount:", "0"));
-        if (!isNaN(amount) && amount > 0) {
-            financeData.expenses += amount;
-            updateFinanceUI();
-            saveFinanceData();
-        }
+  
+    addExpenseButton.addEventListener("click", () => {
+      const amountStr = prompt("Enter expense amount:", "0");
+      const amount = parseFloat(amountStr);
+      if (!isNaN(amount) && amount > 0) {
+        financeData.expenses += amount;
+        saveFinanceData();
+      }
     });
-
-    // Update UI
-    function updateFinanceUI() {
-        budgetDisplay.innerText = `Income: $${financeData.income}`;
-        expensesDisplay.innerText = `Expenses: $${financeData.expenses}`;
-    }
-
-    // Save finance data
+  
     function saveFinanceData() {
-        chrome.storage.local.set({ financeData: financeData });
+      chrome.storage.local.set({ financeData }, updateUI);
     }
-});
+  
+    function updateUI() {
+      budgetDisplay.textContent = `Income: $${financeData.income.toFixed(2)}`;
+      expensesDisplay.textContent = `Expenses: $${financeData.expenses.toFixed(2)}`;
+    }
+  });
+  

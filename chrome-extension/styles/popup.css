@@ -1,0 +1,163 @@
+/* popup.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    height: 600px;
+    font-family: Arial, sans-serif;
+    background-color: #f2f5f9;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .header {
+    background-color: #3b7cff;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  /* Nav bar */
+  .nav-bar {
+    display: flex;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .nav-bar .tab-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    background: #fff;
+    font-weight: bold;
+    color: #444;
+    transition: background 0.2s;
+  }
+  
+  .nav-bar .tab-btn:hover {
+    background: #eeeeee;
+  }
+  
+  .nav-bar .tab-btn.active {
+    background: #dce6ff;
+    color: #333;
+  }
+  
+  /* Main tab content area */
+  .tab-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  /* Sections */
+  .tab-section {
+    display: none;
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  }
+  
+  /* Active tab */
+  .tab-section.active {
+    display: block;
+  }
+  
+  /* Shared button styling */
+  button {
+    margin: 8px 0;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  hr {
+    margin: 10px 0;
+    border: 0.5px solid #ccc;
+  }
+  
+  /* Sticky Notes */
+  #notes-container {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 10px;
+  }
+  
+  .sticky-note {
+    background: #fff4a3;
+    border-radius: 6px;
+    padding: 8px;
+    position: relative;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    word-wrap: break-word;
+  }
+  
+  .note-content {
+    outline: none;
+    min-height: 40px;
+    font-size: 14px;
+  }
+  
+  .delete-note {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0 6px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  
+  /* Finance Labels */
+  #budget,
+  #expenses {
+    font-size: 18px;
+    margin: 8px 0;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Plant */
+  .plant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .plant-container img {
+    width: 100px;
+    margin: 8px 0;
+  }
+  
+  #hydration-status {
+    margin: 4px;
+    font-weight: bold;
+    color: #27ae60;
+  }
+  
+  /* Pomodoro */
+  .pomodoro-container {
+    text-align: center;
+  }
+  
+  #timer-display {
+    font-size: 24px;
+    margin: 8px 0;
+  }
+  
